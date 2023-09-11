@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public float moveSpeed = 10f;
 
     public Transform camera;
+    public Texture2D mouseTexture;
     [SerializeField] private float lookSpeed = 10f;
     private float xRotation = 0f;
 
@@ -19,7 +20,9 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
 
+        //Cursor.SetCursor(mouseTexture, Vector2.zero, CursorMode.ForceSoftware);
         Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = true;
     }
 
     // Update is called once per frame
