@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2181.4133, g: 2312.9749, b: 3431.1216, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -676,7 +676,6 @@ Transform:
   m_Children:
   - {fileID: 1823688467}
   - {fileID: 1667021902}
-  - {fileID: 1883394106}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &475766294
@@ -722,6 +721,7 @@ MonoBehaviour:
   camera: {fileID: 1823688467}
   mouseTexture: {fileID: 2800000, guid: 62efa4164fffbb447846b04d78630bfb, type: 3}
   lookSpeed: 0.1
+  shoot: 0
 --- !u!114 &475766296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -769,7 +769,19 @@ MonoBehaviour:
     m_ActionId: bb44b95d-f5f9-41e6-86e2-d7c9c7b91b8d
     m_ActionName: PlayerInput/Jump[/Keyboard/space]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 475766295}
+        m_TargetAssemblyTypeName: PlayerScript, Assembly-CSharp
+        m_MethodName: OnShoot
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 1212b470-3dd9-416f-a44e-948d43f38366
     m_ActionName: PlayerInput/Shoot[/Mouse/leftButton]
   - m_PersistentCalls:
@@ -805,7 +817,7 @@ GameObject:
   - component: {fileID: 529967307}
   - component: {fileID: 529967306}
   - component: {fileID: 529967305}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1193,7 +1205,8 @@ Transform:
   m_LocalPosition: {x: -0.004, y: 0.423, z: 0.827}
   m_LocalScale: {x: 0.83104795, y: 0.7052341, z: 0.83104795}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1883394106}
   m_Father: {fileID: 475766293}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1823688468
@@ -1331,37 +1344,37 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 475766293}
+    m_TransformParent: {fileID: 1823688467}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: cdf6e9413c39e2343847888967de1a41,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.2941416
+      value: 0.35402492
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cdf6e9413c39e2343847888967de1a41,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.24984819
+      value: 0.3540249
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cdf6e9413c39e2343847888967de1a41,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.29403523
+      value: 0.35402495
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cdf6e9413c39e2343847888967de1a41,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.83935845
+      value: 1.0148132
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cdf6e9413c39e2343847888967de1a41,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.11283735
+      value: -0.7598006
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cdf6e9413c39e2343847888967de1a41,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.8781683
+      value: 1.2648709
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cdf6e9413c39e2343847888967de1a41,
         type: 3}
@@ -1415,6 +1428,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1883394108}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cdf6e9413c39e2343847888967de1a41,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1883394109}
   m_SourcePrefab: {fileID: 100100000, guid: cdf6e9413c39e2343847888967de1a41, type: 3}
 --- !u!4 &1883394106 stripped
 Transform:
@@ -1532,6 +1549,24 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &1883394109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1883394107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5d59981b61fb4040b472d03f0f990cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePoint: {fileID: 638519025}
+  camera: {fileID: 1823688467}
+  player: {fileID: 475766293}
+  whatIsGrappable:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &2013410473
 GameObject:
   m_ObjectHideFlags: 1

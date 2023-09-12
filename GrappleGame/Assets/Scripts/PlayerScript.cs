@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Player : MonoBehaviour
+public class PlayerScript : MonoBehaviour
 {
 
     private Rigidbody rb;
@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
     public Texture2D mouseTexture;
     [SerializeField] private float lookSpeed = 10f;
     private float xRotation = 0f;
+
+    public bool shoot;
 
 
     // Start is called before the first frame update
@@ -56,6 +58,15 @@ public class Player : MonoBehaviour
 
         Debug.Log(mouseInput);
 
+    }
+
+    public void OnShoot(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started)
+        {
+            shoot = true;
+            Debug.Log("pew");
+        }
     }
 
 }
