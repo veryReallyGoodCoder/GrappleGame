@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2164.4036, g: 2272.68, b: 3311.0981, a: 1}
+  m_IndirectSpecularColor: {r: 2163.7932, g: 2271.922, b: 3308.6685, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -722,6 +722,7 @@ MonoBehaviour:
   mouseTexture: {fileID: 2800000, guid: 62efa4164fffbb447846b04d78630bfb, type: 3}
   lookSpeed: 0.1
   shoot: 0
+  activeGrapple: 0
 --- !u!114 &475766296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1915,7 +1916,7 @@ LineRenderer:
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
-  m_MotionVectors: 0
+  m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
@@ -1923,7 +1924,7 @@ LineRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2e798f96b3f3e8c4299e902d5db4ad06, type: 2}
+  - {fileID: 2100000, guid: d0dd428dc6503ad438c40e5922df9345, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2019,13 +2020,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInput: {fileID: 475766289}
+  whatIsGrappable:
+    serializedVersion: 2
+    m_Bits: 64
   firePoint: {fileID: 638519025}
   camera: {fileID: 1823688467}
   player: {fileID: 475766293}
   maxDistance: 100
-  whatIsGrappable:
-    serializedVersion: 2
-    m_Bits: 64
+  grapplingCd: 1
+  grappleDelay: 0.25
+  overshootY: 5
 --- !u!1 &2013410473
 GameObject:
   m_ObjectHideFlags: 1
