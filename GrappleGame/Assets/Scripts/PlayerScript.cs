@@ -56,16 +56,20 @@ public class PlayerScript : MonoBehaviour
         camera.transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
         gameObject.transform.Rotate(Vector3.up * mouseInput.x);
 
-        Debug.Log(mouseInput);
+        //Debug.Log(mouseInput);
 
     }
 
     public void OnShoot(InputAction.CallbackContext ctx)
     {
-        if (ctx.started)
+        if (ctx.action.triggered)
         {
             shoot = true;
-            Debug.Log("pew");
+            //Debug.Log("pew");
+        }
+        else 
+        {
+            shoot = false;
         }
     }
 
