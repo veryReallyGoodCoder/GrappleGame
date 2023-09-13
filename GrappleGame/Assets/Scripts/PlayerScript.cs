@@ -6,15 +6,22 @@ public class PlayerScript : MonoBehaviour
 {
 
     private Rigidbody rb;
-    
+
+    [Header("Movement")]
     private Vector2 moveInput, mouseInput;
     public float moveSpeed = 10f;
 
+    [Header("Camera")]
     public Transform camera;
     public Texture2D mouseTexture;
     [SerializeField] private float lookSpeed = 10f;
     private float xRotation = 0f;
 
+    [Header("Jump")]
+    public bool jump;
+    public float jumpForce = 10f;
+
+    [Header("Grapple")]
     public bool shoot;
     public bool activeGrapple;
 
@@ -41,6 +48,12 @@ public class PlayerScript : MonoBehaviour
         Vector3 move = transform.right * moveInput.x + transform.forward * moveInput.y;
         rb.MovePosition(transform.position + move * moveSpeed * Time.fixedDeltaTime);
 
+        if(jump)
+        {
+            //Vector3 jumpMove = Vector3.up;
+            rb.AddForce(Vector3.up * jumpForce * Time.deltaTime);
+        }
+
     }
 
     public void MovePlayer(InputAction.CallbackContext ctx)
@@ -60,6 +73,11 @@ public class PlayerScript : MonoBehaviour
 
         //Debug.Log(mouseInput);
 
+    }
+
+    public void OnJump(InputAction.CallbackContext ctx)
+    {
+        jump = ctx.action.triggered;
     }
 
     public void OnShoot(InputAction.CallbackContext ctx)
