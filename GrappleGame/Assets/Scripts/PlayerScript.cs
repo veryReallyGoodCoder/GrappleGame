@@ -21,6 +21,11 @@ public class PlayerScript : MonoBehaviour
     public bool jump;
     public float jumpForce = 10f;
 
+    public Transform groundCheck;
+    public LayerMask groundMask;
+    private float groundDistance = 0.5f;
+    private bool isGrounded;
+
     [Header("Grapple")]
     public bool shoot;
     public bool activeGrapple;
@@ -48,10 +53,13 @@ public class PlayerScript : MonoBehaviour
         Vector3 move = transform.right * moveInput.x + transform.forward * moveInput.y;
         rb.MovePosition(transform.position + move * moveSpeed * Time.fixedDeltaTime);
 
-        if(jump)
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        
+        if(jump && isGrounded)
         {
             //Vector3 jumpMove = Vector3.up;
-            rb.AddForce(Vector3.up * jumpForce * Time.deltaTime);
+            rb.velocity = Vector3.up * jumpForce * Time.deltaTime;
+            Debug.Log(jump);
         }
 
     }
