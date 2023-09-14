@@ -93,7 +93,7 @@ public class PlayerScript : MonoBehaviour
         if (ctx.action.triggered)
         {
             shoot = true;
-            //Debug.Log("pew");
+           // Debug.Log("pew");
         }
         else 
         {

@@ -17,6 +17,9 @@ public class GrapplingScript : MonoBehaviour
     [Header("Variables")]
 
     private Vector3 grapplePoint;
+    private bool isRaycastEnabled;
+
+    private Transform GrabbedObjectPostion;
 
     [SerializeField] private float maxDistance = 100f;
 
@@ -40,19 +43,26 @@ public class GrapplingScript : MonoBehaviour
     {
         shoot = playerInput.GetComponent<PlayerScript>().shoot;
 
+        Debug.Log(shoot); 
+
         if (shoot)
         {
             Debug.Log("hallo");
             StartGrapple();
         }
-        /*else if(!shoot)
+        else if (!shoot)
         {
             StopGrapple();
-        }*/
+        }
 
-        if(grapplingCdTimer > 0)
+        if (grapplingCdTimer > 0)
         {
             grapplingCdTimer -= Time.deltaTime;
+        }
+
+        if (grappling)
+        {
+            lr.SetPosition(0, firePoint.position);
         }
 
     }
@@ -61,51 +71,56 @@ public class GrapplingScript : MonoBehaviour
     {
         //DrawRope();
 
-        if (grappling)
-        {
-            lr.SetPosition(0, firePoint.position);
-        }
+
     }
 
     private void StartGrapple()
     {
 
-        if (grapplingCdTimer > 0) return;
+        isRaycastEnabled = true;
 
-        grappling = true;
-
-        RaycastHit hit;
-
-        if(Physics.Raycast(camera.position, camera.forward, out hit, maxDistance, whatIsGrappable))
+        if (isRaycastEnabled)
         {
-            grapplePoint = hit.point;
 
-            Invoke(nameof(ExecuteGrapple), grappleDelay);
+            if (grapplingCdTimer > 0) return;
 
-            /*joint = player.gameObject.AddComponent<SpringJoint>();
-            joint.autoConfigureConnectedAnchor = false;
-            joint.connectedAnchor = grapplePoint;
+            grappling = true;
 
-            float distanceFromPoint = Vector3.Distance(player.position, grapplePoint);
+            RaycastHit hit;
 
-            //mess w/ these
-            joint.minDistance = distanceFromPoint * 0.1f;
-            joint.maxDistance = distanceFromPoint * 0.1f;
+            if (Physics.Raycast(camera.position, camera.forward, out hit, maxDistance, whatIsGrappable))
+            {
+                grapplePoint = hit.point;
+                GrabbedObjectPostion = hit.transform;
+                isRaycastEnabled = false;
 
-            joint.spring = 10f;
-            joint.damper = 15f;
-            //joint.massScale = 10;*/
+                Invoke(nameof(ExecuteGrapple), grappleDelay);
+
+                /*joint = player.gameObject.AddComponent<SpringJoint>();
+                joint.autoConfigureConnectedAnchor = false;
+                joint.connectedAnchor = grapplePoint;
+
+                float distanceFromPoint = Vector3.Distance(player.position, grapplePoint);
+
+                //mess w/ these
+                joint.minDistance = distanceFromPoint * 0.1f;
+                joint.maxDistance = distanceFromPoint * 0.1f;
+
+                joint.spring = 10f;
+                joint.damper = 15f;
+                //joint.massScale = 10;*/
 
 
 
-            Debug.Log("grapple");
+                Debug.Log("grapple");
 
-        }
-        else
-        {
-            grapplePoint = camera.position + camera.forward * maxDistance;
-            Invoke(nameof(StopGrapple), grappleDelay);
+            }
+            else
+            {
+                grapplePoint = camera.position + camera.forward * maxDistance;
+                Invoke(nameof(StopGrapple), grappleDelay);
 
+            }
         }
 
         lr.enabled = true;
@@ -125,9 +140,11 @@ public class GrapplingScript : MonoBehaviour
             highestArcPoint = overshootY;
         }
 
-        playerInput.GetComponent<PlayerScript>().JumpToPosition(grapplePoint, highestArcPoint);
+        playerInput.GetComponent<PlayerScript>().JumpToPosition(GrabbedObjectPostion.position, highestArcPoint);
 
-        Invoke(nameof(StopGrapple), 1f);
+
+
+       Invoke(nameof(StopGrapple), 1f);
 
     }
 
