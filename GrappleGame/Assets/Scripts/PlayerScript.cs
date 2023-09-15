@@ -1,4 +1,3 @@
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -102,6 +101,7 @@ public class PlayerScript : MonoBehaviour
         {
             Debug.Log("you died");
             SceneManager.LoadScene("DeathScene");
+            Cursor.lockState = CursorLockMode.None;
         }
 
     }
@@ -177,6 +177,8 @@ public class PlayerScript : MonoBehaviour
             Debug.Log("you died");
 
             SceneManager.LoadScene("DeathScene");
+            Cursor.lockState = CursorLockMode.None;
+
         }
     }
 
