@@ -1,6 +1,7 @@
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -30,6 +31,15 @@ public class PlayerScript : MonoBehaviour
     public bool shoot;
     public bool activeGrapple;
 
+    [Header("Boost")]
+    public GameObject speedLines;
+
+    private bool boost;
+    public float boostSpeed = 20;
+
+    [SerializeField] private float setBoostTimer = 3;
+    private float boostTimer;
+
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +49,9 @@ public class PlayerScript : MonoBehaviour
         //Cursor.SetCursor(mouseTexture, Vector2.zero, CursorMode.ForceSoftware);
         Cursor.lockState = CursorLockMode.Locked;
         //Cursor.visible = true;
+
+        boostTimer = setBoostTimer;
+        speedLines.SetActive(false);
     }
 
     // Update is called once per frame
@@ -50,9 +63,12 @@ public class PlayerScript : MonoBehaviour
     private void FixedUpdate()
     {
         
+        //movement
         Vector3 move = transform.right * moveInput.x + transform.forward * moveInput.y;
         rb.MovePosition(transform.position + move * moveSpeed * Time.fixedDeltaTime);
-
+        
+        
+        //jump
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         
         if(jump && isGrounded)
@@ -60,6 +76,32 @@ public class PlayerScript : MonoBehaviour
             //Vector3 jumpMove = Vector3.up;
             rb.velocity = Vector3.up * jumpForce * Time.deltaTime;
             Debug.Log(jump);
+        }
+
+
+        //boost
+        if (boost && boostTimer > 0)
+        {
+            Debug.Log("boost");
+            rb.AddForce(transform.forward * boostSpeed * Time.deltaTime, ForceMode.Impulse);
+            //rb.velocity = Vector3.forward * boostSpeed * Time.deltaTime;
+
+            boostTimer -= Time.deltaTime;
+            //Debug.Log(boostTimer);
+
+            speedLines.SetActive(true);
+        }
+        else
+        {
+            speedLines.SetActive(false);
+        }
+
+
+        //player fall
+        if(transform.position.y < -200)
+        {
+            Debug.Log("you died");
+            SceneManager.LoadScene("DeathScene");
         }
 
     }
@@ -101,6 +143,12 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    public void OnBoost(InputAction.CallbackContext ctx)
+    {
+        boost = ctx.action.triggered;
+        boostTimer = setBoostTimer;
+    }
+
     public void JumpToPosition(Vector3 targetPosition, float trajectoryHeight)
     {
         activeGrapple = true;
@@ -120,6 +168,16 @@ public class PlayerScript : MonoBehaviour
         Vector3 velocityXZ = displacementXZ / (Mathf.Sqrt(-2 * trajectoryHeight / gravity) + Mathf.Sqrt(2 * (displacementY - trajectoryHeight) / gravity));
 
         return velocityXZ + velocityY;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Lava")
+        {
+            Debug.Log("you died");
+
+            SceneManager.LoadScene("DeathScene");
+        }
     }
 
 }

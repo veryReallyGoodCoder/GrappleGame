@@ -12,7 +12,7 @@ public class GrapplingScript : MonoBehaviour
 
     public LayerMask whatIsGrappable;
 
-    [SerializeField] private new Transform firePoint, camera, player;
+    [SerializeField] private new Transform firePoint, camera;
 
     [Header("Variables")]
 
@@ -35,7 +35,7 @@ public class GrapplingScript : MonoBehaviour
     void Start()
     {
         lr = GetComponent<LineRenderer>();
-
+        //speedLines.SetActive(false);
     }
 
     // Update is called once per frame
@@ -47,7 +47,7 @@ public class GrapplingScript : MonoBehaviour
 
         if (shoot)
         {
-            Debug.Log("hallo");
+            //Debug.Log("hallo");
             StartGrapple();
         }
         else if (!shoot)
@@ -64,13 +64,6 @@ public class GrapplingScript : MonoBehaviour
         {
             lr.SetPosition(0, firePoint.position);
         }
-
-    }
-
-    private void LateUpdate()
-    {
-        //DrawRope();
-
 
     }
 
@@ -91,26 +84,11 @@ public class GrapplingScript : MonoBehaviour
             if (Physics.Raycast(camera.position, camera.forward, out hit, maxDistance, whatIsGrappable))
             {
                 grapplePoint = hit.point;
-                GrabbedObjectPostion = hit.transform;
+                //GrabbedObjectPostion = hit.transform;
+
                 isRaycastEnabled = false;
 
                 Invoke(nameof(ExecuteGrapple), grappleDelay);
-
-                /*joint = player.gameObject.AddComponent<SpringJoint>();
-                joint.autoConfigureConnectedAnchor = false;
-                joint.connectedAnchor = grapplePoint;
-
-                float distanceFromPoint = Vector3.Distance(player.position, grapplePoint);
-
-                //mess w/ these
-                joint.minDistance = distanceFromPoint * 0.1f;
-                joint.maxDistance = distanceFromPoint * 0.1f;
-
-                joint.spring = 10f;
-                joint.damper = 15f;
-                //joint.massScale = 10;*/
-
-
 
                 Debug.Log("grapple");
 
@@ -119,13 +97,13 @@ public class GrapplingScript : MonoBehaviour
             {
                 grapplePoint = camera.position + camera.forward * maxDistance;
                 Invoke(nameof(StopGrapple), grappleDelay);
-
+                Debug.Log("missed target");
             }
+
         }
 
         lr.enabled = true;
         lr.SetPosition(1, grapplePoint);
-
     }
 
     private void ExecuteGrapple()
@@ -140,8 +118,9 @@ public class GrapplingScript : MonoBehaviour
             highestArcPoint = overshootY;
         }
 
-        playerInput.GetComponent<PlayerScript>().JumpToPosition(GrabbedObjectPostion.position, highestArcPoint);
+        playerInput.GetComponent<PlayerScript>().JumpToPosition(grapplePoint, highestArcPoint);
 
+        //speedLines.SetActive(true);
 
 
        Invoke(nameof(StopGrapple), 1f);
@@ -158,6 +137,8 @@ public class GrapplingScript : MonoBehaviour
         grapplingCdTimer = grapplingCd;
 
         lr.enabled = false;
+
+        //speedLines.SetActive(false);
 
         Debug.Log("stop grapple");
     }
