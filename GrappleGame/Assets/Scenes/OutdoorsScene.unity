@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2159.8684, g: 2264.2522, b: 3287.5981, a: 1}
+  m_IndirectSpecularColor: {r: 612.69226, g: 764.0826, b: 983.2228, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3534,7 +3534,7 @@ MonoBehaviour:
   camera: {fileID: 1823688467}
   maxDistance: 125
   grapplingCd: 0
-  grappleDelay: 0.5
+  grappleDelay: 0.25
   overshootY: 5
 --- !u!1 &2013410473
 GameObject:
