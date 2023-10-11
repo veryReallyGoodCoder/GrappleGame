@@ -182,4 +182,13 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        IPickupable pickupItem = other.GetComponent<IPickupable>();
+        if(pickupItem != null)
+        {
+            pickupItem.OnPickup(this);
+        }
+    }
+
 }
