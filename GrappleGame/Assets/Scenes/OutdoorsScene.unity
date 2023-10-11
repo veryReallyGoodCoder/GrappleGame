@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 612.69226, g: 764.0826, b: 983.2228, a: 1}
+  m_IndirectSpecularColor: {r: 1065.462, g: 1375.7443, b: 1838.8167, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -316,13 +316,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 157207112}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalRotation: {x: 0.108448535, y: -0, z: -0, w: 0.99410206}
+  m_LocalPosition: {x: -211, y: 240, z: -237}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 12.452, y: 0, z: 0}
 --- !u!114 &157207115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3222,7 +3222,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 10000
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -3619,6 +3619,11 @@ MonoBehaviour:
   grapplingCd: 0
   grappleDelay: 0.25
   overshootY: 5
+  resolution: 0
+  waveCount: 0
+  wobbleCount: 0
+  waveSize: 0
+  animSpeed: 0
 --- !u!1 &2013410473
 GameObject:
   m_ObjectHideFlags: 1
