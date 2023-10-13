@@ -81,7 +81,7 @@ public class PlayerScript : MonoBehaviour
         //boost
         if (boost && boostTimer > 0)
         {
-            Debug.Log("boost");
+            //Debug.Log("boost");
             rb.AddForce(transform.forward * boostSpeed * Time.deltaTime, ForceMode.Impulse);
             //rb.velocity = Vector3.forward * boostSpeed * Time.deltaTime;
 

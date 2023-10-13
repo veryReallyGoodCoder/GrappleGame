@@ -43,7 +43,7 @@ public class GrapplingScript : MonoBehaviour
     {
         shoot = playerInput.GetComponent<PlayerScript>().shoot;
 
-        Debug.Log(shoot); 
+        //Debug.Log(shoot); 
 
         if (shoot)
         {
@@ -90,14 +90,14 @@ public class GrapplingScript : MonoBehaviour
 
                 Invoke(nameof(ExecuteGrapple), grappleDelay);
 
-                Debug.Log("grapple");
+                //Debug.Log("grapple");
 
             }
             else
             {
                 grapplePoint = camera.position + camera.forward * maxDistance;
                 Invoke(nameof(StopGrapple), grappleDelay);
-                Debug.Log("missed target");
+                //Debug.Log("missed target");
             }
 
         }
@@ -140,7 +140,7 @@ public class GrapplingScript : MonoBehaviour
 
         //speedLines.SetActive(false);
 
-        Debug.Log("stop grapple");
+        //Debug.Log("stop grapple");
     }
 
     private void DrawRope()

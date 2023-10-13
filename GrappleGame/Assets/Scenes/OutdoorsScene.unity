@@ -1695,6 +1695,7 @@ GameObject:
   - component: {fileID: 988371512}
   - component: {fileID: 988371516}
   - component: {fileID: 988371517}
+  - component: {fileID: 988371518}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -1817,14 +1818,27 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 988371510}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 066b52e0c49ed2a4495336d23faca5ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 988371516}
+--- !u!114 &988371518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 988371510}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ae34f28711383a4a90a553c66a994eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolRadius: 10
-  enemyStats: {fileID: 11400000, guid: 30cead0d6399b074f8ae6130813f281d, type: 2}
-  patrolCenter: {fileID: 1800642866}
+  enemyStats: {fileID: 11400000, guid: 1a762c4efdded0042955397ef9489456, type: 2}
+  currentRank: 0
+  patrolPoint: {fileID: 1800642866}
 --- !u!1 &1026123239
 GameObject:
   m_ObjectHideFlags: 0
@@ -2877,7 +2891,7 @@ Transform:
   m_GameObject: {fileID: 1800642865}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 401.34, y: 188.14, z: 237.04}
+  m_LocalPosition: {x: 377.12, y: 188.14, z: 233.43}
   m_LocalScale: {x: 2.9004, y: 2.9004, z: 2.9004}
   m_ConstrainProportionsScale: 0
   m_Children: []
