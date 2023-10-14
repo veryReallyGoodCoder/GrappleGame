@@ -65,13 +65,15 @@ public class EnemyAction : MonoBehaviour
         {
             agent.SetDestination(target.position);
             Debug.Log("Attack Player");
+            animator.SetBool("isPatrolling", false);
             animator.SetBool("isAttacking", true);
-
+           
             attackingPlayer = true;
         }
         else if(distanceToPlayer > enemyStat.enemyRange && attackingPlayer)
         {
             Patrol(initialPos, endDestination.position);
+            animator.SetBool("isAttacking", false);
             attackingPlayer = false;
         }
     }
