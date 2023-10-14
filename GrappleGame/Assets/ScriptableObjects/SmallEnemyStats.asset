@@ -16,3 +16,4 @@ MonoBehaviour:
   enemyDamage: 3
   enemySpeed: 10
   enemyMaxHealth: 50
+  enemyRange: 5

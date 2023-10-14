@@ -20,7 +20,8 @@ public class EnemyScript : MonoBehaviour
 
     [Header("Navigation")]
 
-    public GameObject patrolPoint;
+    public Transform patrolPoint;
+    private Vector3 initialPos;
 
 
     // Start is called before the first frame update
@@ -32,38 +33,14 @@ public class EnemyScript : MonoBehaviour
         health = enemyStats.enemyMaxHealth;
         Debug.Log(currentRank + ", Health: " + health);
 
-        GameObject point = GameObject.Find("patrolPoint");
-        Vector3 destination = point.transform.position;
-        //enemy.Patrol(destination);
-
-
-        void SetRank(EnemyRank rank)
-        {
-            switch (rank)
-            {
-                case EnemyRank.Small:
-                    enemy = new SmallEnemy();
-                    break;
-                case EnemyRank.Medium:
-                    enemy = new MediumEnemy();
-                    break;
-                case EnemyRank.Large:
-                    enemy = new LargeEnemy();
-                    break;
-                case EnemyRank.Ranged:
-                    enemy = new RangedEnemy();
-                    break;
-            }
-        }
-
-
+        initialPos = gameObject.transform.position;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        //sEnemy.Patrol();
-
+        enemy.Patrol(initialPos, patrolPoint.position);
     }
 
     /*public void SetRank(EnemyRank rank)
@@ -84,5 +61,22 @@ public class EnemyScript : MonoBehaviour
                 break;
         }
     }*/
-
+    public void SetRank(EnemyRank rank)
+    {
+        switch (rank)
+        {
+            case EnemyRank.Small:
+                enemy = new SmallEnemy();
+                break;
+            case EnemyRank.Medium:
+                enemy = new MediumEnemy();
+                break;
+            case EnemyRank.Large:
+                enemy = new LargeEnemy();
+                break;
+            case EnemyRank.Ranged:
+                enemy = new RangedEnemy();
+                break;
+        }
+    }
 }

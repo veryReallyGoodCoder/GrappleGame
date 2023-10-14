@@ -16,4 +16,10 @@ public class MediumEnemy : EnemyAction
     {
         
     }
+
+    public override void Patrol(Vector3 startPos, Vector3 endPos)
+    {
+        
+    }
+
 }

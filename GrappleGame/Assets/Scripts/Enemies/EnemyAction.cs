@@ -5,33 +5,39 @@ using UnityEngine.AI;
 public class EnemyAction : MonoBehaviour
 {
 
-    public NavMeshAgent agent;
-    private Vector3 initialPos;
+    [Header("Reference")]
+    public EnemyStatData enemyStat;
 
-    public Transform endDestination;
+    NavMeshAgent agent;
+    Animator animator;
+
+    [SerializeField] private Transform target;
     
-    // Start is called before the first frame update
+    private Vector3 initialPos;
+    public Transform endDestination;
+
+    private bool attackingPlayer = false;
+    
     void Start()
     {
         agent = gameObject.GetComponent<NavMeshAgent>();
+        animator = gameObject.GetComponent<Animator>();
 
         initialPos = gameObject.transform.position;
         
-
-        
     }
 
-    // Update is called once per frame
     void Update()
     {
         Patrol(initialPos, endDestination.position);
-        Debug.Log(initialPos);
+        AttackPlayer();
     }
 
-    public virtual void Patrol(Vector3 startPos, Vector3 endPos)
+    //basic patrol script to move enemy between initial position and a destination:
+    public virtual void Patrol(Vector3 startPos, Vector3 endPos) 
     {
         Vector3 des;
-        //agent.SetDestination(des);
+        animator.SetBool("isPatrolling", true);
 
         if (!agent.hasPath)
         {
@@ -46,10 +52,28 @@ public class EnemyAction : MonoBehaviour
                 des = startPos;
                 agent.SetDestination(des);
             }
-            //else if(!agent.pathPending)
 
         }
 
+    }
+
+    public virtual void AttackPlayer()
+    {
+        float distanceToPlayer = Vector3.Distance(transform.position, target.position);
+
+        if(distanceToPlayer <= enemyStat.enemyRange && !attackingPlayer)
+        {
+            agent.SetDestination(target.position);
+            Debug.Log("Attack Player");
+            animator.SetBool("isAttacking", true);
+
+            attackingPlayer = true;
+        }
+        else if(distanceToPlayer > enemyStat.enemyRange && attackingPlayer)
+        {
+            Patrol(initialPos, endDestination.position);
+            attackingPlayer = false;
+        }
     }
 
 }

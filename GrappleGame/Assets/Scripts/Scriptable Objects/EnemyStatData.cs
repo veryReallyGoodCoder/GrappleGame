@@ -8,5 +8,7 @@ public class EnemyStatData : ScriptableObject
     public int enemyDamage;
     public int enemySpeed;
     public int enemyMaxHealth;
+
+    public int enemyRange;
     
 }
