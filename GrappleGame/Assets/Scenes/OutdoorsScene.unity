@@ -1818,12 +1818,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 988371510}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 066b52e0c49ed2a4495336d23faca5ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 988371516}
+  endDestination: {fileID: 1800642866}
 --- !u!114 &988371518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1831,7 +1832,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 988371510}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ae34f28711383a4a90a553c66a994eb, type: 3}
   m_Name: 
@@ -2891,7 +2892,7 @@ Transform:
   m_GameObject: {fileID: 1800642865}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 377.12, y: 188.14, z: 233.43}
+  m_LocalPosition: {x: 377.12, y: 185.47, z: 233.43}
   m_LocalScale: {x: 2.9004, y: 2.9004, z: 2.9004}
   m_ConstrainProportionsScale: 0
   m_Children: []

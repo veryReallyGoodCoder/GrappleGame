@@ -16,14 +16,11 @@ public class EnemyScript : MonoBehaviour
 
     public EnemyRank currentRank;
 
+    EnemyAction enemy;
+
     [Header("Navigation")]
 
     public GameObject patrolPoint;
-
-
-    //SmallEnemy sEnemy = new SmallEnemy();
-
-    EnemyAction enemy;
 
 
     // Start is called before the first frame update
@@ -37,7 +34,27 @@ public class EnemyScript : MonoBehaviour
 
         GameObject point = GameObject.Find("patrolPoint");
         Vector3 destination = point.transform.position;
-        enemy.Patrol(destination);
+        //enemy.Patrol(destination);
+
+
+        void SetRank(EnemyRank rank)
+        {
+            switch (rank)
+            {
+                case EnemyRank.Small:
+                    enemy = new SmallEnemy();
+                    break;
+                case EnemyRank.Medium:
+                    enemy = new MediumEnemy();
+                    break;
+                case EnemyRank.Large:
+                    enemy = new LargeEnemy();
+                    break;
+                case EnemyRank.Ranged:
+                    enemy = new RangedEnemy();
+                    break;
+            }
+        }
 
 
     }
@@ -49,7 +66,7 @@ public class EnemyScript : MonoBehaviour
 
     }
 
-    public void SetRank(EnemyRank rank)
+    /*public void SetRank(EnemyRank rank)
     {
         switch (rank)
         {
@@ -66,6 +83,6 @@ public class EnemyScript : MonoBehaviour
                 enemy = gameObject.AddComponent<RangedEnemy>();
                 break;
         }
-    }
+    }*/
 
 }
