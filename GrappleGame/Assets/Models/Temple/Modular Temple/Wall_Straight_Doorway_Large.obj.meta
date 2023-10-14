@@ -3,7 +3,22 @@ guid: d156deb4fa5db9f4e859c7469f6667ba
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sandstone_5
+    second: {fileID: 2100000, guid: 5255bc7daac3639458e66467c6443184, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sandstone_Floor
+    second: {fileID: 2100000, guid: 1d33d8610a2214843beda74833e512c7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sandstone_Trim
+    second: {fileID: 2100000, guid: 960b44646759bc744b849a2eb56cbe6a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
