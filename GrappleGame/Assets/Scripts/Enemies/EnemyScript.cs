@@ -43,24 +43,7 @@ public class EnemyScript : MonoBehaviour
         enemy.Patrol(initialPos, patrolPoint.position);
     }
 
-    /*public void SetRank(EnemyRank rank)
-    {
-        switch (rank)
-        {
-            case EnemyRank.Small:
-                enemy = gameObject.AddComponent<SmallEnemy>();
-                break;
-            case EnemyRank.Medium:
-                enemy = gameObject.AddComponent<MediumEnemy>();
-                break;
-            case EnemyRank.Large:
-                enemy = gameObject.AddComponent<LargeEnemy>();
-                break;
-            case EnemyRank.Ranged:
-                enemy = gameObject.AddComponent<RangedEnemy>();
-                break;
-        }
-    }*/
+ 
     public void SetRank(EnemyRank rank)
     {
         switch (rank)

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MediumEnemy : EnemyAction
@@ -20,6 +18,8 @@ public class MediumEnemy : EnemyAction
     public override void Patrol(Vector3 startPos, Vector3 endPos)
     {
         
+
+
     }
 
 }
