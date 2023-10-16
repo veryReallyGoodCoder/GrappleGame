@@ -35,7 +35,6 @@ public class GrapplingScript : MonoBehaviour
     void Start()
     {
         lr = GetComponent<LineRenderer>();
-        lr.useWorldSpace = true;
         //speedLines.SetActive(false);
     }
 
