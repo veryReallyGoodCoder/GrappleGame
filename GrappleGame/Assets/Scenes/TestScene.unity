@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 436646966}
   - component: {fileID: 436646967}
   m_Layer: 0
-  m_Name: GameObject (1)
+  m_Name: negXAxis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1187,7 +1187,7 @@ GameObject:
   - component: {fileID: 1406953558}
   - component: {fileID: 1406953559}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: yAxis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

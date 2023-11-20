@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 13bf0578cb4bc5342b3ad4c53e900bbc
+guid: 4567a85516f39ff4791d7f8ecaec2d82
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,23 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Leaves
-    second: {fileID: 2100000, guid: 1789019c60bde4449b695de306cef6d6, type: 2}
+      name: mat20
+    second: {fileID: 2100000, guid: 8ef1e74cb6f4a8f44a445c54409e661d, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Leaves 2
-    second: {fileID: 2100000, guid: 51e245596cd65d144a3b01c455462e51, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Leaves 3
-    second: {fileID: 2100000, guid: 1fa8ec15b44776741836b1e974968a0f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Trunk
-    second: {fileID: 2100000, guid: b0970c130af5fe24badd5de7f7f19c70, type: 2}
+      name: mat9
+    second: {fileID: 2100000, guid: 1548531c7f4ffcb42a70e68ce956639f, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
