@@ -17,6 +17,12 @@ public class EnemyAction : MonoBehaviour
     public Transform endDestination;
 
     private bool attackingPlayer = false;
+
+    [Header("Attack")]
+
+    [SerializeField] private int damage = 10;
+    
+    
     
     void Start()
     {
