@@ -3,7 +3,12 @@ guid: d35db5502cf4d9e4eb8753f121d8ea21
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: IvoryCanePalmTree_mat
+    second: {fileID: 2100000, guid: f6455694ecfc959418eefbe82f7da8a4, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
