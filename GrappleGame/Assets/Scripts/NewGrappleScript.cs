@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class NewGrappleScript : MonoBehaviour
 {
     LineRenderer lr;
 
     public PlayerScript player;
-    
+    public LayerMask whatIsGrappable;
+
     public Vector3 gp;
 
     [SerializeField] Transform camera, firePoint;
@@ -15,6 +17,9 @@ public class NewGrappleScript : MonoBehaviour
     [SerializeField] private int  maxGrapple;
 
     private bool shoot, jump;
+
+    public float overshootY;
+
 
     [Header("LR Anim")]
 
@@ -28,29 +33,33 @@ public class NewGrappleScript : MonoBehaviour
         lr = GetComponent<LineRenderer>();
         lr.useWorldSpace = true;
 
-       
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        shoot = player.shoot;
+        //shoot = player.shoot;
         jump = player.jump;
 
         if (Input.GetMouseButtonDown(0))
         {
+            shoot = true;
             DrawRope();
-
-            //StartCoroutine(AnimateRope(gp));
         }
         else if(Input.GetMouseButtonUp(0))
         {
             lr.enabled = false;
+            shoot = false;
+        }
+
+        if (shoot && jump)
+        {
+            ExecuteGrapple();
+
         }
 
 
-        lr.SetPosition(0, firePoint.position);
+            lr.SetPosition(0, firePoint.position);
         //StartCoroutine(AnimateRope());
 
     }
@@ -66,6 +75,7 @@ public class NewGrappleScript : MonoBehaviour
         else
         {
             gp = camera.position + camera.forward * maxGrapple;
+            StopGrapple();
         }
 
         lr.enabled = true;
@@ -73,6 +83,48 @@ public class NewGrappleScript : MonoBehaviour
         lr.SetPosition(1, gp);
 
         StartCoroutine(AnimateRope());
+
+        if (jump)
+        {
+            ExecuteGrapple();
+        }
+
+    }
+
+    private void ExecuteGrapple()
+    {
+        //DrawRope();
+
+        Vector3 lowestPoint = new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z);
+
+        float grapplePointRelativeYPo = gp.y - lowestPoint.y; ;
+        float highestArcPoint = grapplePointRelativeYPo + overshootY;
+
+        if (grapplePointRelativeYPo < 0)
+        {
+            highestArcPoint = overshootY;
+        }
+
+        player.JumpToPosition(gp, highestArcPoint);
+
+        //speedLines.SetActive(true);
+
+        if(transform.position == gp)
+        {
+            Invoke(nameof(StopGrapple), 1f);
+
+        }
+
+    }
+
+    private void StopGrapple()
+    {
+
+        /*grappling = false;
+
+        grapplingCdTimer = grapplingCd;*/
+
+        lr.enabled = false;
 
     }
 

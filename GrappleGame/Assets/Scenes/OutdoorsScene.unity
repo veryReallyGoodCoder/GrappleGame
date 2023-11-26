@@ -39,7 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1053.2277, g: 1379.1954, b: 1848.1174, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10389,10 +10389,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1036689915}
+  whatIsGrappable:
+    serializedVersion: 2
+    m_Bits: 64
   gp: {x: 0, y: 0, z: 0}
   camera: {fileID: 342520559}
   firePoint: {fileID: 1991272165}
   maxGrapple: 50
+  overshootY: 3
   linePoints: 100
   waveCount: 5
   warpCount: 5
