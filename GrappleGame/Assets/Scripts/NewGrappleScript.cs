@@ -16,7 +16,7 @@ public class NewGrappleScript : MonoBehaviour
 
     [SerializeField] private int  maxGrapple;
 
-    private bool shoot, jump;
+    private bool shoot, jump, hitGO;
 
     public float overshootY;
 
@@ -52,7 +52,7 @@ public class NewGrappleScript : MonoBehaviour
             shoot = false;
         }
 
-        if (shoot && jump)
+        if (shoot && jump && hitGO)
         {
             ExecuteGrapple();
 
@@ -68,9 +68,10 @@ public class NewGrappleScript : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(camera.position, camera.forward, out hit, maxGrapple))
+        if (Physics.Raycast(camera.position, camera.forward, out hit, maxGrapple, whatIsGrappable))
         {
             gp = hit.point;
+            hitGO = true;
         }
         else
         {
@@ -84,10 +85,6 @@ public class NewGrappleScript : MonoBehaviour
 
         StartCoroutine(AnimateRope());
 
-        if (jump)
-        {
-            ExecuteGrapple();
-        }
 
     }
 
@@ -125,6 +122,7 @@ public class NewGrappleScript : MonoBehaviour
         grapplingCdTimer = grapplingCd;*/
 
         lr.enabled = false;
+        hitGO = false;
 
     }
 
