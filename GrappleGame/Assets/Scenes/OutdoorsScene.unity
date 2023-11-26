@@ -9978,6 +9978,11 @@ MonoBehaviour:
   camera: {fileID: 342520559}
   firePoint: {fileID: 1991272165}
   maxGrapple: 50
+  linePoints: 100
+  waveCount: 5
+  warpCount: 5
+  waveSize: 10
+  animSpeed: 0.2
 --- !u!1 &1007111572
 GameObject:
   m_ObjectHideFlags: 0
