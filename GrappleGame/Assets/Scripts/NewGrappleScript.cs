@@ -28,6 +28,8 @@ public class NewGrappleScript : MonoBehaviour
         lr = GetComponent<LineRenderer>();
         lr.useWorldSpace = true;
 
+       
+
     }
 
     // Update is called once per frame
@@ -82,12 +84,16 @@ public class NewGrappleScript : MonoBehaviour
         Vector3 endPos = lr.GetPosition(1);
 
         Vector3 pos = startPos;
+
         while(pos != endPos)
         {
             float time = (Time.time - startTime) / animSpeed;
+
             pos = Vector3.Lerp(startPos, endPos, time);
             lr.SetPosition(1, pos);
+
             yield return null;
+
             if(pos == endPos)
             {
                 Debug.Log("end pos reached");

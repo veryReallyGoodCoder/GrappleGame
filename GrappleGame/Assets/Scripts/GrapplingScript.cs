@@ -152,6 +152,11 @@ public class GrapplingScript : MonoBehaviour
 
         RaycastHit hit;
 
+        if(Physics.Raycast(camera.position, camera.forward, out hit, maxDistance))
+        {
+
+        }
+
 
     }
 
