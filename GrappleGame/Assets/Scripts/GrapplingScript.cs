@@ -24,7 +24,7 @@ public class GrapplingScript : MonoBehaviour
 
     [SerializeField] private float maxDistance = 100f;
 
-    private bool shoot, grappling;
+    private bool shoot, jump, grappling;
 
     public float grapplingCd;
     private float grapplingCdTimer;
@@ -44,10 +44,11 @@ public class GrapplingScript : MonoBehaviour
     void Update()
     {
         shoot = playerInput.GetComponent<PlayerScript>().shoot;
+        jump = playerInput.GetComponent<PlayerScript>().jump;
 
         //Debug.Log(shoot); 
 
-        if (shoot)
+        if (shoot && jump)
         {
             //Debug.Log("hallo");
             StartGrapple();
@@ -147,12 +148,11 @@ public class GrapplingScript : MonoBehaviour
 
     private void DrawRope()
     {
-        /*if (!joint) return;
-        
-        lr.SetPosition(0, firePoint.position);
-        lr.SetPosition(1, grapplePoint);
+        lr.enabled = true;
 
-        Debug.Log("draw rope");*/
+        RaycastHit hit;
+
+
     }
 
 }

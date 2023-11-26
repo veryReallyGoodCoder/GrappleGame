@@ -2,10 +2,12 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(Animator))]
 public class PlayerScript : MonoBehaviour
 {
 
     private Rigidbody rb;
+    private Animator anim;
 
     [Header("Movement")]
     private Vector2 moveInput, mouseInput;
@@ -44,6 +46,7 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
 
         //Cursor.SetCursor(mouseTexture, Vector2.zero, CursorMode.ForceSoftware);
         Cursor.lockState = CursorLockMode.Locked;
@@ -66,6 +69,14 @@ public class PlayerScript : MonoBehaviour
         Vector3 move = transform.right * moveInput.x + transform.forward * moveInput.y;
         rb.MovePosition(transform.position + move * moveSpeed * Time.fixedDeltaTime);
         
+        if(moveInput.magnitude > 0 || moveInput.magnitude < 0)
+        {
+            anim.SetBool("isWalking", true);
+        }
+        else
+        {
+            anim.SetBool("isWalking", false);
+        }
         
         //jump
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
@@ -132,7 +143,7 @@ public class PlayerScript : MonoBehaviour
 
     public void OnShoot(InputAction.CallbackContext ctx)
     {
-        if (ctx.action.triggered)
+        /*if (ctx.action.triggered)
         {
             shoot = true;
            // Debug.Log("pew");
@@ -140,7 +151,10 @@ public class PlayerScript : MonoBehaviour
         else 
         {
             shoot = false;
-        }
+        }*/
+
+        shoot = ctx.action.triggered;
+
     }
 
     public void OnBoost(InputAction.CallbackContext ctx)
