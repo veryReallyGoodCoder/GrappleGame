@@ -59,7 +59,7 @@ public class NewGrappleScript : MonoBehaviour
         }
 
 
-            lr.SetPosition(0, firePoint.position);
+        lr.SetPosition(0, firePoint.position);
         //StartCoroutine(AnimateRope());
 
     }
@@ -67,21 +67,26 @@ public class NewGrappleScript : MonoBehaviour
     private void DrawRope()
     {
         RaycastHit hit;
+        lr.enabled = true;
 
         if (Physics.Raycast(camera.position, camera.forward, out hit, maxGrapple, whatIsGrappable))
         {
             gp = hit.point;
             hitGO = true;
+            lr.SetPosition(1, gp);
+
         }
         else
         {
             gp = camera.position + camera.forward * maxGrapple;
-            StopGrapple();
+            lr.SetPosition(1, gp);
+
+            Invoke(nameof(StopGrapple), 0.5f);
         }
 
-        lr.enabled = true;
-        lr.SetPosition(0, firePoint.position);
-        lr.SetPosition(1, gp);
+        
+        //lr.SetPosition(0, firePoint.position);
+        //lr.SetPosition(1, gp);
 
         StartCoroutine(AnimateRope());
 
@@ -123,6 +128,8 @@ public class NewGrappleScript : MonoBehaviour
 
         lr.enabled = false;
         hitGO = false;
+
+        Debug.Log("Grapple Stopped");
 
     }
 
