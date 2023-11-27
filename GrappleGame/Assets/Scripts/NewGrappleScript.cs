@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEditor.PlayerSettings;
 
 public class NewGrappleScript : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class NewGrappleScript : MonoBehaviour
 
     [Header("LR Anim")]
 
-    [SerializeField] private int linePoints, waveCount, warpCount;
+    [SerializeField] private int linePoints, waveCount, waveAmp;
     [SerializeField] private float waveSize, animSpeed;
 
     
@@ -156,6 +157,15 @@ public class NewGrappleScript : MonoBehaviour
                 Debug.Log("end pos reached");
             }
         }
+
+        /*float t = Time.time * waveCount;
+        float yOffset = Mathf.Sin(t) * waveAmp;
+
+        Vector3[] positions = { firePoint.position, gp + new Vector3(0f, yOffset, 0f) };
+        lr.SetPositions(positions);
+
+        yield return null;*/
+
     }
 
     private void SetPoints(Vector3 targetPos, float percent)
@@ -168,7 +178,7 @@ public class NewGrappleScript : MonoBehaviour
             float xPos = (float)i / linePoints * length;
             float reversePercent = (1 - percent);
 
-            float amp = Mathf.Sin(reversePercent * warpCount * Mathf.PI);
+            float amp = Mathf.Sin(reversePercent * Mathf.PI);
 
             float yPos = Mathf.Sin((float)waveCount * i / linePoints * 2 * Mathf.PI * reversePercent) * amp;
 

@@ -10,12 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a9954ee69a7d2f94f8a2b2df92a242df, type: 3}
-  m_Name: MediumEnemyStat
+  m_Name: NewEnemyStatData
   m_EditorClassIdentifier: 
-  enemyName: Erica
-  enemyMaxHealth: 75
-  enemyDamage: 7
-  enemyWalkSpeed: 3.5
-  enemyRunSpeed: 6
-  enemyRange: 20
-  attackRange: 3
+  enemyName: 
+  enemyDamage: 0
+  enemySpeed: 0
+  enemyMaxHealth: 0
+  enemyRange: 0

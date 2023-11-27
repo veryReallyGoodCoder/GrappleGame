@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: SmallEnemyStats
   m_EditorClassIdentifier: 
   enemyName: Johnathan
-  enemyDamage: 3
-  enemySpeed: 10
   enemyMaxHealth: 50
+  enemyDamage: 3
+  enemyWalkSpeed: 0
+  enemyRunSpeed: 0
   enemyRange: 10
+  attackRange: 3
