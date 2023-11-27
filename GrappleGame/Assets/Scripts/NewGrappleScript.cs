@@ -34,6 +34,7 @@ public class NewGrappleScript : MonoBehaviour
         lr = GetComponent<LineRenderer>();
         lr.useWorldSpace = true;
 
+        maxGrapple = player.grappleLength;
     }
 
     // Update is called once per frame

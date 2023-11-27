@@ -29,6 +29,8 @@ public class PlayerScript : MonoBehaviour
     private bool isGrounded;
 
     [Header("Grapple")]
+    public int grappleLength = 75;
+    
     public bool shoot;
     public bool activeGrapple;
 

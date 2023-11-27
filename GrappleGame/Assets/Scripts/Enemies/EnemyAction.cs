@@ -41,7 +41,7 @@ public class EnemyAction : MonoBehaviour
     {
         Patrol(initialPos, endDestination.position);
         DetectPlayer();
-        //AttackPlayer();
+        AttackPlayer();
     }
 
     //basic patrol script to move enemy between initial position and a destination:
@@ -79,6 +79,8 @@ public class EnemyAction : MonoBehaviour
 
             animator.SetBool("isPatrolling", false);
             animator.SetBool("isRunning", true);
+            animator.SetBool("isAttacking", false);
+
 
             //attackingPlayer = true;
         }
@@ -109,6 +111,7 @@ public class EnemyAction : MonoBehaviour
         }
         else if(distanceToPlayer > enemyStat.attackRange && attackingPlayer)
         {
+            animator.SetBool("isAttacking", false);
             DetectPlayer();
         }
     }
