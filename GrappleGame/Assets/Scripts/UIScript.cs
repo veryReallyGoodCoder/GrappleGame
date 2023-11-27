@@ -25,4 +25,10 @@ public class UIScript : MonoBehaviour
         SceneManager.LoadScene("StartingScene");
     }
 
+    public void OnWin()
+    {
+        SceneManager.LoadScene("WinScene");
+        Debug.Log("Win!");
+    }
+
 }
